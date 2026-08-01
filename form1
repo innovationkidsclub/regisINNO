@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครเรียน Innovation Kids Club - เทอม 2/2569</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f0f8ff;
+            background-image: radial-gradient(#d1e8ff 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8b, #4facfe, #00f2fe);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .header p {
+            margin: 10px 0 0;
+            font-size: 16px;
+        }
+        form {
+            padding: 30px;
+        }
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #eee;
+        }
+        h3 {
+            color: #4facfe;
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        input[type="text"], input[type="tel"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .radio-group {
+            margin-top: 10px;
+        }
+        .radio-group label {
+            display: inline-block;
+            margin-right: 20px;
+            font-weight: 400;
+        }
+        button[type="submit"] {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Prompt', sans-serif;
+        }
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #28a745;
+        }
+        
+        @media (max-width: 600px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>🚀 สมัครเรียนทดลองวิทย์ เทอม 2/2569</h1>
+        <p>Innovation Kids Club - เปิดสนามเด็กเล่นวิทยาศาสตร์</p>
+    </div>
+
+    <!-- ฟอร์มนี้จะส่งข้อมูลไปยัง Google Apps Script Web App URL -->
+    <!-- หมายเหตุ: ต้องเปลี่ยน action เป็น URL ที่ได้จาก Google Apps Script -->
+    <form id="registrationForm" onsubmit="submitForm(event)">
+        
+        <div class="form-section">
+            <h3>🔬 ข้อมูลนักเรียน</h3>
+            <div class="form-group">
+                <label>ชื่อ-นามสกุล นักเรียน *</label>
+                <input type="text" name="student_name" required placeholder="ด.ช. / ด.ญ. ...">
+            </div>
+            <div class="two-col">
+                <div class="form-group">
+                    <label>อายุ (ปี) *</label>
+                    <input type="number" name="age" required min="3" max="15">
+                </div>
+                <div class="form-group">
+                    <label>ระดับชั้น *</label>
+                    <select name="grade" required>
+                        <option value="">-- เลือกชั้นเรียน --</option>
+                        <option value="ป.1">ป.1</option>
+                        <option value="ป.2">ป.2</option>
+                        <option value="ป.3">ป.3</option>
+                        <option value="ป.4">ป.4</option>
+                        <option value="ป.5">ป.5</option>
+                        <option value="ป.6">ป.6</option>
+                        <option value="ม.1">ม.1</option>
+                        <option value="ม.2">ม.2</option>
+                        <option value="ม.3">ม.3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>โรงเรียน *</label>
+                <input type="text" name="school" required>
+            </div>
+            <div class="form-group">
+                <label>ประวัติการแพ้ยา แพ้อาหาร หรือโรคประจำตัว (หากไม่มีให้ระบุว่า "ไม่มี") *</label>
+                <textarea name="allergies" rows="2" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>ข้อมูลผู้ปกครอง</h3>
+            <div class="two-col">
+                <div class="form-group">
+                    <label>ชื่อ-นามสกุล คุณพ่อ</label>
+                    <input type="text" name="father_name">
+                </div>
+                <div class="form-group">
+                    <label>อาชีพคุณพ่อ</label>
+                    <input type="text" name="father_job">
+                </div>
+                <div class="form-group">
+                    <label>เบอร์โทรคุณพ่อ</label>
+                    <input type="tel" name="father_phone">
+                </div>
+                <div class="form-group">
+                    <label>ชื่อ-นามสกุล คุณแม่</label>
+                    <input type="text" name="mother_name">
+                </div>
+                <div class="form-group">
+                    <label>อาชีพคุณแม่</label>
+                    <input type="text" name="mother_job">
+                </div>
+                <div class="form-group">
+                    <label>เบอร์โทรคุณแม่</label>
+                    <input type="tel" name="mother_phone">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>เบอร์โทรนักเรียน (ถ้ามี)</label>
+                <input type="tel" name="student_phone">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>🗓️ เลือกรอบเรียนที่ต้องการ</h3>
+            <div class="form-group">
+                <select name="schedule" required>
+                    <option value="">-- เลือกรอบเรียน --</option>
+                    <option value="จันทร์เย็น (ป.3-4) 17.00-19.00">จันทร์เย็น (ป.3-4) 17.00-19.00</option>
+                    <option value="พฤหัสเย็น (ม.1-ม.3) 17.00-19.00">พฤหัสเย็น (ม.1-ม.3) 17.00-19.00</option>
+                    <option value="ศุกร์เย็น (ป.5-ม.1) 17.00-19.00">ศุกร์เย็น (ป.5-ม.1) 17.00-19.00</option>
+                    <option value="เสาร์เช้า (ป.1-ป.3) 10.00-12.00">เสาร์เช้า (ป.1-ป.3) 10.00-12.00</option>
+                    <option value="เสาร์บ่าย (ป.5-ม.2) 13.00-15.00">เสาร์บ่าย (ป.5-ม.2) 13.00-15.00</option>
+                    <option value="อาทิตย์เช้า (ป.2-ป.4) 10.00-12.00">อาทิตย์เช้า (ป.2-ป.4) 10.00-12.00</option>
+                    <option value="อาทิตย์บ่าย (ม.1-ม.3) 13.00-15.00">อาทิตย์บ่าย (ม.1-ม.3) 13.00-15.00</option>
+                    <option value="อาทิตย์เย็น (ป.2-ป.4) 15.30-17.30">อาทิตย์เย็น (ป.2-ป.4) 15.30-17.30</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>📸 การยินยอมด้านภาพถ่าย</h3>
+            <div class="form-group">
+                <label>ทางสถาบันขออนุญาตบันทึกภาพน้องๆ ขณะทำกิจกรรมเพื่อเก็บเป็นอัลบั้มและลงโพสต์ประชาสัมพันธ์ในเพจเฟสบุ๊ค *</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="consent" value="ยินยอม" required> ยินยอม</label>
+                    <label><input type="radio" name="consent" value="ไม่ยินยอม"> ไม่ยินยอม</label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" id="submitBtn">ยืนยันการสมัครเรียน</button>
+    </form>
+
+    <div class="success-message" id="successMessage">
+        <h2>🎉 สมัครเรียนสำเร็จ!</h2>
+        <p>ขอบคุณที่สมัครเข้าร่วมสนุกกับ Innovation Kids Club นะคะ<br>ครูเล็กหรือพี่หนูนาจะรีบติดต่อกลับเพื่อยืนยันสิทธิ์ค่ะ</p>
+        <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #eee; border: none; border-radius: 5px; cursor: pointer;">สมัครเพิ่มอีกคน</button>
+    </div>
+
+</div>
+
+<script>
+    // สคริปต์สำหรับส่งข้อมูลไปที่ Google Sheets ผ่าน Apps Script
+    function submitForm(event) {
+        event.preventDefault();
+        
+        const form = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        
+        // ** นำ URL ของ Web App ที่ได้จาก Google Apps Script มาใส่ที่นี่ **
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxDCVLjG4qYjJUZIO3cUT_HwBOx_P1m7XzLB3ypJdWbeywy62tlPMf5umZjOySa29O2ZQ/exec';
+        
+        // ถ้ายังไม่ได้ใส่ URL ให้แจ้งเตือนก่อน
+        if(scriptURL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+            alert('กรุณาตั้งค่า Web App URL ในโค้ดก่อนใช้งานจริง');
+            // จำลองการส่งสำเร็จเพื่อให้เห็นภาพ
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            return;
+        }
+
+        submitBtn.innerHTML = 'กำลังส่งข้อมูล... ⏳';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+
+        fetch(scriptURL, { method: 'POST', body: formData})
+            .then(response => {
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+                submitBtn.innerHTML = 'ยืนยันการสมัครเรียน';
+                submitBtn.disabled = false;
+            });
+    }
+</script>
+
+</body>
+</html>
